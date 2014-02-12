@@ -29,6 +29,12 @@
   \end{itemize}
 }
 
+\frame{\frametitle{Model Image}
+put fig 2 here
+
+give gloss of variables: relate them to the input/output/nuissance ones Jason defines
+}
+
 \frame{\frametitle{Evidence Lower Bound (ELBO)}
   \begin{itemize}
     \item Key insight is the use of Jensen's inequaltiy
@@ -36,11 +42,11 @@
   \end{itemize}
 
   \begin{eqnarray*} %% Do avoid eqnarray if possible.
-    \log(p(x) & \log \int p(x,z,\beta) dz d\beta \\
-    & = & \log \int p(x,z,\beta) \frac{q(z,\beta)}{q(z,\beta)} dz d\beta \\
-    & = & \log\left(\mathbb{E}_q \left[ \frac{p(x,z,\beta)}{q(z,\beta)} \right] \right) \\
-    & \geq & \mathbb{E}_q \left[ \log p(x,z,\beta)\right] - \mathbb{E}_q \left[ q(z,\beta) \right] \\
-    & = & \mathcal{L}(q)
+    \log(p(x \mid \alpha)) & = & \log \int p(x,z,\beta \mid \alpha) dz \ d\beta \\
+    \uncover<2->{& = & \log \int p(x,z,\beta \mid \alpha) \frac{q(z,\beta)}{q(z,\beta)} dz d\beta \\}
+    \uncover<3->{& = & \log\left(\mathbb{E}_q \left[ \frac{p(x,z,\beta \mid \alpha)}{q(z,\beta)} \right] \right) \\}
+    \uncover<4->{& \geq & \mathbb{E}_q \left[ \log p(x,z,\beta \mid \alpha)\right] - \mathbb{E}_q \left[ q(z,\beta) \right] \\}
+    \uncover<5->{& = & \mathcal{L}(q)}
   \end{eqnarray*}
 }
 
