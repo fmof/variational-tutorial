@@ -65,20 +65,14 @@ give gloss of variables: relate them to the input/output/nuissance ones Jason de
 
 }
 
-\frame{\frametitle{How is EM a special case?}
-  \begin{itemize}
-    \item How do we choose $\mathcal{Q}$?
-    \item We want it to be easily computable!
-    \item What if $p(z,\beta|x) \in \mathcal{Q}$? 
-    \item Minimizing the KL divergence is trivial! Set $q(z,\beta) = p(z,beta|x)$
-  \end{itemize}
-  
-
-}
+\input{em-special-case} 
 
 \frame{\frametitle{Variational + $x,\; \forall x$}
   \begin{itemize}
-    \item Clearly we have some choices...and they have names!
+    \item Variational EM - the process described above
+    \item Variational Bayes - approximate inference (no M-step)
+    \item Variational Decoding - approximation decoding 
+      
   \end{itemize}
 
 }
