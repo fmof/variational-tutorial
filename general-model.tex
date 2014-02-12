@@ -5,12 +5,14 @@
 \end{figure}
 
 \begin{table}
+\centering
 \begin{tabular}{cccc}
-\textbf{Variable (Hoffman)} & \textbf{Known?} & \textbf{Variable (Jason)} & \textbf{Examples}\\
-$x_n$ & observed & input & examples\\
-$z_n$ & latent & & ??\\
-$\beta$ & latent & nuissance & ??\\
-$\alpha$ & either & d& d\\
+\textbf{Variable} & \textbf{Known} & \textbf{Jason's Term} & \textbf{Examples}\\
+$x_n$ & observed & input & words (HMM POS, LDA)\\ \hline
+\multirow{2}{*}{$z_n$} & \multirow{2}{*}{latent} & output & POS tags, topic assignments\\ 
+ &  & nuissance & POS transition probabilities\\  \hline
+$\beta$ & latent & nuissance & topic priors\\ \hline
+$\alpha$ & either & nuissance & hyperparameter \\
 \end{tabular}
 \end{table}
 %give gloss of variables: relate them to the input/output/nuissance ones Jason defines
