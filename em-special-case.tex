@@ -1,0 +1,16 @@
+\frame{\frametitle{How is EM a special case?}
+  \begin{itemize}
+    \item How do we choose $\mathcal{Q}$?
+    \item We want it to be easily computable!
+    \item What if $p(z,\beta|x) \in \mathcal{Q}$? 
+    \item Then computing expectations under $q$ is just inference
+      in our model!
+    \item Consider a standard HMM, our E-step involves direct computation of the marginals through Forward-Backwards
+    \item Let $p_\theta(z|x)$ be our model and $\theta_1$ be a setting of parameters
+      where $z$ is a latent variable (tags in an HMM) and $x$ is an observed variable (words in an HMM)
+    \item Since $p_\theta \in \mathcal{Q},\; \forall \theta \in \Theta$, we simply need to maximize
+      $\sum_z p(z|x;\theta_1) \log\left(p(z|x; \theta_2)\right)$ with respect to $\theta_2$
+  \end{itemize}
+  
+
+}
