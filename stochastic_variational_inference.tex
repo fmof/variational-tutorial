@@ -31,7 +31,7 @@
 
 \frame{\frametitle{Evidence Lower Bound (ELBO)}
   \begin{itemize}
-    \item Key insight is the use of Jensen's inequaltiy
+    \item Key insight is the use of Jensen's inequality
     \item We choose $q$ from some family of distributions $\mathcal{Q}$
   \end{itemize}
 
@@ -63,7 +63,7 @@
   \begin{itemize}
     \item How do we choose $\mathcal{Q}$?
     \item We want it to be easily computable!
-    \item What is $p(z,\beta|x) \in \mathcal{Q}$? 
+    \item What if $p(z,\beta|x) \in \mathcal{Q}$? 
     \item Minimizing the KL divergence is trivial! Set $q(z,\beta) = p(z,beta|x)$
   \end{itemize}
   
