@@ -28,9 +28,53 @@
     \item EM is a special case
   \end{itemize}
 }
-\subsection{Subsection no.1.1  }
-\frame{ 
-Without title somethink is missing. 
+
+\frame{\frametitle{Evidence Lower Bound (ELBO)}
+  \begin{itemize}
+    \item Key insight is the use of Jensen's inequaltiy
+    \item We choose $q$ from some family of distributions $\mathcal{Q}$
+  \end{itemize}
+
+  \begin{eqnarray*} %% Do avoid eqnarray if possible.
+    \log(p(x) & \log \int p(x,z,\beta) dz d\beta \\
+    & = & \log \int p(x,z,\beta) \frac{q(z,\beta)}{q(z,\beta)} dz d\beta \\
+    & = & \log\left(\mathbb{E}_q \left[ \frac{p(x,z,\beta)}{q(z,\beta)} \right] \right) \\
+    & \geq & \mathbb{E}_q \left[ \log p(x,z,\beta)\right] - \mathbb{E}_q \left[ q(z,\beta) \right] \\
+    & = & \mathcal{L}(q)
+  \end{eqnarray*}
+}
+
+\frame{\frametitle{Why does maximizes the ELBO minimize the KL-Divergence?} 
+  \begin{eqnarray*} %% Do avoid eqnarray if possible.
+    \text{KL}(q(z,\beta)||p(z,\beta|x) &=& \mathbb{E}_q \left[ \log(q(z,\beta) \right] - \mathbb{E}_q 
+\left[ \log p(z,\beta|x) \right] \\
+    & = & \mathbb{E}_q \left[ \log(q(z,\beta) \right] - \mathbb{E}_q 
+\left[ \log p(z,\beta,x) \right] + \log p(x) \\
+    & = & -\mathcal{L}(q) + const.
+    \end{eqnarray*}
+    
+    \begin{itemize}
+      \item Maximizing $\mathcal{L}(q)$ is just minimizing $-\mathcal{L}(q)$
+    \end{itemize}
+
+}
+
+\frame{\frametitle{How is EM a special case?}
+  \begin{itemize}
+    \item How do we choose $\mathcal{Q}$?
+    \item We want it to be easily computable!
+    \item What is $p(z,\beta|x) \in \mathcal{Q}$? 
+    \item Minimizing the KL divergence is trivial! Set $q(z,\beta) = p(z,beta|x)$
+  \end{itemize}
+  
+
+}
+
+\frame{\frametitle{Variational + $x,\; \forall x$}
+  \begin{itemize}
+    \item Clearly we have some choices...and they have names!
+  \end{itemize}
+
 }
 
 
