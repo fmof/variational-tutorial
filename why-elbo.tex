@@ -1,0 +1,14 @@
+\frame{\frametitle{Why does maximizes the ELBO minimize the KL-Divergence?} 
+  \begin{eqnarray*} %% Do avoid eqnarray if possible.
+    \text{KL}(q(z,\beta)||p(z,\beta|x) &=& \mathbb{E}_q \left[ \log(q(z,\beta) \right] - \mathbb{E}_q 
+\left[ \log p(z,\beta|x) \right] \\
+    & = & \mathbb{E}_q \left[ \log(q(z,\beta) \right] - \mathbb{E}_q 
+\left[ \log p(z,\beta,x) \right] + \log p(x) \\
+    & = & -\mathcal{L}(q) + const.
+    \end{eqnarray*}
+    
+    \begin{itemize}
+      \item Maximizing $\mathcal{L}(q)$ is just minimizing $-\mathcal{L}(q)$
+    \end{itemize}
+
+}
