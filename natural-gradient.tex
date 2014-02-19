@@ -69,13 +69,20 @@ $D^{\textrm{sym}}_{KL} = 1$\\
 }
 \frame{\frametitle{Natural Gradient}
 \begin{itemize}
-\item Main idea: perform coordinate ascent according to a different metric
+\item Perform coordinate ascent according to a different metric
 \uncover<2->{
 \begin{align*}
 \arg \max f(\lambda + d\lambda) & \textrm{ subject to } & 
 \alt<3->{ D^{\textrm{sym}}_{KL}(\lambda, \lambda+d\lambda) < \epsilon}{\|d\lambda\|^2 < \epsilon^2}
 \end{align*}
 }
-\item<4->
+\item<4-> $D^{\textrm{sym}}_{KL} \approx d\lambda^\intercal G(\lambda) d\lambda$ for Riemannian metric $G$
+\item<5-> Define the \textit{natural gradient} 
+\begin{align*}
+\hat \nabla_\lambda f(\lambda) 
+\uncover<6->{& = & }
+\uncover<7->{\redub{G(\lambda)^{-1}}_{\text{Inverse Fisher matrix}} \cdot}
+\uncover<6->{ \redub{\nabla_\lambda f(\lambda)}_{\text{Euclidean gradient}}}
+\end{align*}
 \end{itemize}
 }
