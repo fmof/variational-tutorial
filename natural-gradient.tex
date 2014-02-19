@@ -86,3 +86,21 @@ $D^{\textrm{sym}}_{KL} = 1$\\
 \end{align*}
 \end{itemize}
 }
+
+\frame{\frametitle{Natural Gradient for mean field}
+\begin{itemize}
+\item Natural gradient: 
+
+\begin{center}
+$\hat \nabla_\lambda f(\lambda) = \redub{G(\lambda)^{-1}}_{\text{Inverse Fisher matrix}} \cdot \redub{\nabla_\lambda f(\lambda)}_{\text{Euclidean gradient}} $
+\end{center}
+\item<2-> ELBO gradient
+\begin{center}
+\begin{align*}
+\nabla_\lambda \mathcal{L} 
+& = & \nabla_\lambda^2 A_g(\lambda) \cdot \left(\mathbb{E}_q[ \eta_g(x,z,\alpha)] - \lambda\right) \\
+\uncover<3->{& = & G(\lambda) \cdot \left(\mathbb{E}_q[ \eta_g(x,z,\alpha)] - \lambda\right) \\}
+\end{align*}
+\end{center}
+\end{itemize}
+}
