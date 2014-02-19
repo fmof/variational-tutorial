@@ -10,8 +10,25 @@
 
 \documentclass{beamer}
 \usepackage{multirow,multicol}
+\usepackage{color}
+\makeatletter
+\newcommand{\redub}{}
+\def\redub#1{%
+  \@ifnextchar_%
+    {\@redub{#1}}
+    {\@latex@warning{Missing argument for \string\redub}\@redub{#1}_{}}%
+}
+\def\@redub #1_#2{%
+    \colorlet{currentcolor}{.}%
+    \color{red}%
+    \underbrace{\color{currentcolor}#1}_{\color{red}#2}%
+    \color{currentcolor}%
+}
+\makeatother
+
 \begin{document}
 \title{Stochastic Variational Inference}   
+\subtitle{from Hoffman et al., 2013}
 \author{Presented By Ryan Cotterell and Frank Ferraro} 
 \date{\today} 
 

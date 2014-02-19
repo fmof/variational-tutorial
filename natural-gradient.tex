@@ -27,7 +27,7 @@ $\mu_2=0.1,\sigma_2=0.01$
 \end{columns}
 %%%%%%%%%%
 }
-\frame{\frametitle{Low $D^{\textrm{sym}}_{KL}$ $\approx$ low distribution similarity}
+\frame{\frametitle{``Close'' distributions $\approx$ small $D^{\textrm{sym}}_{KL}$}
 \begin{itemize}
 \item  $D^{\textrm{sym}}_{KL}(\lambda_0,\lambda_1) = 
 \mathbb{E}_{\lambda_0}\left[ \log{\frac{p_{\lambda_0}}{p_{\lambda_1}} } \right] + 
@@ -37,28 +37,28 @@ $\mu_2=0.1,\sigma_2=0.01$
 \uncover<3->{
 \begin{columns}
 \begin{column}{.48\textwidth}
-\begin{block}{\small High Distribution similarity, High $D^{\textrm{sym}}_{KL}$}
+\begin{block}{\small Similar distributions, Low $D^{\textrm{sym}}_{KL}$}
 {\small
 $\mu_1=0,\sigma_1=10K$\\
 $\mu_2=10,\sigma_2=10K$\\
 $D^{\textrm{sym}}_{KL} = 0.01$\\
 }
 \begin{center}
-\includegraphics[scale=.15]{figs/first}
+\includegraphics[scale=.2]{figs/first}
 \end{center}
 \end{block}
 \end{column}%
 \hfill%
 \uncover<4->{
 \begin{column}{.48\textwidth}
-\begin{block}{\small Low Distribution similarity, Low $D^{\textrm{sym}}_{KL}$}
+\begin{block}{\small Dissimilar distributions, High $D^{\textrm{sym}}_{KL}$}
 {\small
 $\mu_1=0,\sigma_1=0.01$\\
 $\mu_2=0.1,\sigma_2=0.01$\\
 $D^{\textrm{sym}}_{KL} = 1$\\
 }
 \begin{center}
-\includegraphics[scale=.15]{figs/second}
+\includegraphics[scale=.2]{figs/second}
 \end{center}
 \end{block}
 \end{column}%
@@ -68,5 +68,14 @@ $D^{\textrm{sym}}_{KL} = 1$\\
 %%%%%%%%%%
 }
 \frame{\frametitle{Natural Gradient}
- Talk about Natural Gradient
+\begin{itemize}
+\item Main idea: perform coordinate ascent according to a different metric
+\uncover<2->{
+\begin{align*}
+\arg \max f(\lambda + d\lambda) & \textrm{ subject to } & 
+\alt<3->{ D^{\textrm{sym}}_{KL}(\lambda, \lambda+d\lambda) < \epsilon}{\|d\lambda\|^2 < \epsilon^2}
+\end{align*}
+}
+\item<4->
+\end{itemize}
 }
