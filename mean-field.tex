@@ -1,0 +1,51 @@
+\frame{\frametitle{Coordinate ascent mean-field variational inference}
+\begin{enumerate}
+\item Mean-field: each latent variable is independent
+\begin{align*}
+q(z, \beta) = q(\beta\ \mid\ \alt<2->{\gvp{\lambda}}{\lambda})
+\prod_{n=1}^N \prod_{j=1}^J
+q(z_{n,j}\ \mid\ \alt<2->{\lvp{\phi_{n,j}}}{\phi_{n,j}})
+\end{align*}
+\begin{itemize}
+\item<3-> Entropy decomposes 
+\end{itemize}
+\item<4-> Assume $q(\cdot \ \mid\ \text{variational params})$ is in (the same) exponential family as $p$
+\begin{itemize}
+\item<5-> $\lambda$ and $\phi_{n,j}$ are the \textit{natural (variational) parameters}
+\item<6-> Individual expectations are ``simple'' to compute
+\end{itemize}
+\item<7-> The posterior (global) natural parameters under $p$ are 
+
+$$\eta_g(x,z,\alpha) = \left( \alpha_1 + \sum_{n=1}^N T(z_n,x_n), \alpha_2 + N\right)$$
+\end{enumerate}
+}
+
+\frame{\frametitle{Mean Field ELBO}
+\begin{enumerate}
+\item Since entropy decomposes as
+$
+\mathbb{E}_q[\log q(z,\beta)] = \mathbb{E}_\lambda[\log q(\beta)] + \sum_{n,j} \mathbb{E}_{\phi_{n,j}}[\log q(z_{n,j})],
+$
+\item<2-> And $p(x,z,\beta) = p(x,z) p(\beta | x,z)$
+\item[]<3->
+\begin{align*}
+\mathcal{L}(\gvp{\lambda}) 
+& = & \mathbb{E}_q [\log p(\beta, x, z)] - \mathbb{E}_q [ \log q(z,\beta)] + C_0 \\
+\uncover<4->{& = & \mathbb{E}_q [\log p(\beta | x, z)] - \mathbb{E}_q [ \log q(\beta)] + C_1} \\ \\
+\uncover<5->{
+\nabla_\lambda \mathcal{L}(\gvp{\lambda}) 
+& = & \nabla_\lambda^2 A_g(\lambda) \left(\mathbb{E}_q[ \eta_g(x,z,\alpha)] - \lambda\right)\\
+}
+\end{align*}
+\item<6-> 
+$\alt<7->{\redub{\lambda}_{\text{Variational}}}{\lambda} 
+= \alt<9->{\redub{\mathbb{E}_q}_{\text{Under Variational}}}{\mathbb{E}_q} [ 
+\alt<8->{\redub{\eta_g (x,z,\alpha)}_{\text{Original}}}{\eta_g (x,z,\alpha)}
+]$
+\item<10-> A similar update exists for the local parameters \lvp{\phi_{n,j}}
+
+$$\phi_{n,j} 
+= \mathbb{E}_q [ \eta_l (x_n,z_{n,\backslash j},\alpha) ]
+$$
+\end{enumerate}
+}

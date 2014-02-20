@@ -1,0 +1,109 @@
+
+\frame{\frametitle{Common Distributions}
+\begin{block}{}
+\begin{enumerate}
+\item Dirichlet
+
+\indent $p(x\ \mid\ \alpha) = \dfrac{\Gamma(\sum \alpha_i)}{\prod \Gamma(\alpha_i)} \prod x_i^{\alpha_i - 1}$
+\item Categorical
+
+\indent $p(x\ \mid\ \mathbf{p}) = \prod p_i^{1[x = i]}$
+\item Gaussian
+
+\indent $p(x\ \mid\ \mu,\sigma^2) = \dfrac{1}{\sigma \sqrt{2\pi}} \exp{\left( -\dfrac{(x-\mu)^2}{2\sigma^2}\right)}$
+\end{enumerate}
+\end{block}
+
+\uncover<2->{
+\begin{block}{}
+\begin{center}
+$p(x\ \mid\ \alpha) = 
+\alt<3->{\redub{h(x)}_{Support}}{h(x)}
+\exp{
+	\left( 
+\alt<4->{\redub{\theta}_{\textrm{Natural Parameters}}}{\theta} \cdot 
+\alt<5->{\redub{T(x)}_{\textrm{Sufficient Statistics}}}{T(x)} - 
+\alt<6->{\redub{A(\theta)}_{\textrm{Log Normalizer}}}{A(\theta)}
+\right)
+}$
+\end{center}
+\end{block}
+}
+}
+
+\frame{\frametitle{Common Distributions \ldots in Canonical Form}
+\begin{block}{}
+\begin{enumerate}
+\item Dirichlet
+\begin{itemize}
+\item $\theta = 
+\left(
+\begin{array}{c}
+\alpha_i - 1
+\end{array}
+\right)_i$ , 
+ $T(x) = 
+\left(
+\begin{array}{c}
+\log x_i
+\end{array}
+\right)_i
+$
+\end{itemize}
+\item Categorical
+\begin{itemize}
+\item $\theta = 
+\left(
+\begin{array}{c}
+\log p_i
+\end{array}
+\right)_i$ , 
+ $T(x) = 
+\left(
+\begin{array}{c}
+1[x_j = i]
+\end{array}
+\right)_i
+$
+\end{itemize}
+\item Gaussian
+\begin{itemize}
+\item $\theta = 
+\left(
+\begin{array}{c}
+\frac{\mu}{\sigma^2} \\
+\frac{-1}{2\sigma^2}
+\end{array}
+\right)$ , 
+ $T(x) = 
+\left(
+\begin{array}{c}
+x \\
+x^2
+\end{array}
+\right)
+$
+\end{itemize}
+\end{enumerate}
+\end{block}
+
+\begin{block}{}
+\begin{center}
+$p(x\ \mid\ \alpha) = \redub{h(x)}_{Support}
+\exp{
+	\left( 
+\redub{\theta}_{\textrm{Natural Parameters}} \cdot 
+\redub{T(x)}_{\textrm{Sufficient Statistics}} - 
+\redub{A(\theta)}_{\textrm{Log Normalizer}}
+\right)
+}$
+\end{center}
+\end{block}
+}
+
+\frame{\frametitle{Useful properties of log partition, $A(\theta)$}
+\begin{enumerate}
+\item $\nabla_\theta A(\theta) = \mathbb{E}_q[ T(x)]$
+\item<2-> $\nabla_\theta^2 A(\theta) = \text{Fisher information matrix}$
+\end{enumerate}
+}
