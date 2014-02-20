@@ -1,14 +1,93 @@
-\frame{\frametitle{EM vs. Variational Inference}
-\begin{table}
-\begin{tabular}{cc}
-   \includegraphics[scale=.15]{figs/batch-em}
-&
-   \includegraphics[scale=.15]{figs/step-em}
- \\
-%%%%%%%%%%%%%%%%%
-   \includegraphics[scale=.2]{figs/fig3-vi}
-&
-   \includegraphics[scale=.2]{figs/fig4-svi}
-\end{tabular}
-\end{table}
+\frame{\frametitle{"Stochastizing" EM}
+\begin{center}
+\begin{columns}
+\begin{column}{.5\textwidth}
+\begin{block}{}
+\uncover<1-2>{%\includegraphics[scale=.15]{figs/batch-em}
+\small
+\begin{enumerate}
+\item[] $\mu = \text{initialization}$
+\item[] for $t = 1, \ldots, T$:
+\begin{enumerate}
+\item[] for $i \in [n]$:
+\begin{enumerate}
+\item[] $s_i' = \sum_z p(z | x^{(i)}; \theta(\mu)) \phi(x^{(i)}, z)$
+\item[] $\mu'_t \alt<2>{\alert{+=}}{+=} s_i'$
+\end{enumerate}
+\item[] $\mu = \mu'_t$
+\end{enumerate}
+\end{enumerate}
+}
+\end{block}
+\end{column}
+\begin{column}{.5\textwidth}
+\begin{block}{}
+\begin{center}
+\uncover<2>{%\includegraphics[scale=.15]{figs/step-em}
+\footnotesize
+\begin{enumerate}
+\item[] $\mu = \text{initialization}$; $k = 0$
+\item[] for $t = 1, \ldots, T$:
+\begin{enumerate}
+\item[] for $i \in [n]$ \alert{randomly}:
+\begin{enumerate}
+\item[] $s_i' = \sum_z p(z | x^{(i)}; \theta(\mu)) \phi(x^{(i)}, z)$
+\item[] $\mu \alert{=} (1 - \rho_k) \mu + \rho_k s_i'$
+\item[] $k += 1$
+\end{enumerate}
+\end{enumerate}
+\end{enumerate}
+}
+\end{center}
+\end{block}
+\end{column}
+\end{columns}
+\end{center}
+}
+
+\frame{\frametitle{"Stochastizing" Variational Inference}
+\begin{center}
+\begin{columns}
+\begin{column}{.5\textwidth}
+\begin{block}{}
+\uncover<1-2>{
+\small
+\begin{enumerate}
+\item[] $\gvp{\lambda^{(0)}}= \text{initialization}$
+\item[] 
+\item[] repeat:
+\begin{enumerate}
+\item[] for local $\lvp{\phi_{n,j}}$:
+\begin{enumerate}
+\item[] $\lvp{\phi_{n,j}},\lvp{\phi_{n,j}^{(t)}} = \mathbb{E}_{q^{(t-1)}}[\eta_{l,j}(x_n,z_{n\backslash j}, \beta)]$
+\end{enumerate}
+\item[] $\gvp{\lambda^{(t)}} = \mathbb{E}_{q^{(t)}}[\eta_g(z,x)]$
+\end{enumerate}
+\item[] until ELBO converges
+\end{enumerate}
+}
+\end{block}
+\end{column}
+\begin{column}{.5\textwidth}
+\begin{block}{}
+\begin{center}
+\uncover<2>{
+\footnotesize
+\begin{enumerate}
+\item[] $\gvp{\lambda^{(0)}}= \text{initialization}$
+\item[] set step-size schedule, $\rho_t$
+\item[] repeat:
+\begin{enumerate}
+\item[] sample data point $x_i$ u.a.r.
+\item[] $\lvp{\phi} = \mathbb{E}_{\lambda^{(t-1)}}[\eta_g(x_n,z_{n\backslash j}, \beta)]$
+\item[] $\gvp{\lambda^{(t)}} = \mathbb{E}_{q^{(t)}}[\eta_g(z,x)]$
+\end{enumerate}
+\item[] forever
+\end{enumerate}
+}
+\end{center}
+\end{block}
+\end{column}
+\end{columns}
+\end{center}
 }
