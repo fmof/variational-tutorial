@@ -2,14 +2,14 @@
 \begin{enumerate}
 \item Mean-field: each latent variable is independent
 \begin{align*}
-q(z, \beta) = q(\beta\ \mid\ \alt<2->{\gvp{\lambda}}{\lambda})
+q(z, \beta) = q_{ \alt<2->{\gvp{\lambda}}{\lambda}}(\beta)
 \prod_{n=1}^N \prod_{j=1}^J
-q(z_{n,j}\ \mid\ \alt<2->{\lvp{\phi_{n,j}}}{\phi_{n,j}})
+q_{ \alt<2->{\lvp{\phi_{n,j}}}{\phi_{n,j}}}(z_{n,j})
 \end{align*}
 \begin{itemize}
 \item<3-> Entropy decomposes 
 \end{itemize}
-\item<4-> Assume $q(\cdot \ \mid\ \text{variational params})$ is in (the same) exponential family as $p$
+\item<4-> Assume $q_{ \text{variational params}}(\cdot)$ is in (the same) exponential family as $p$
 \begin{itemize}
 \item<5-> $\lambda$ and $\phi_{n,j}$ are the \textit{natural (variational) parameters}
 \item<6-> Individual expectations are ``simple'' to compute

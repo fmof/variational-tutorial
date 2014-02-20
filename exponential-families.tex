@@ -4,20 +4,20 @@
 \begin{enumerate}
 \item Dirichlet
 
-\indent $p(x\ \mid\ \alpha) = \dfrac{\Gamma(\sum \alpha_i)}{\prod \Gamma(\alpha_i)} \prod x_i^{\alpha_i - 1}$
+\indent $p_\alpha(x) = \dfrac{\Gamma(\sum \alpha_i)}{\prod \Gamma(\alpha_i)} \prod x_i^{\alpha_i - 1}$
 \item Categorical
 
-\indent $p(x\ \mid\ \mathbf{p}) = \prod p_i^{1[x = i]}$
+\indent $p_{\mathbf{p}}(x) = \prod p_i^{1[x = i]}$
 \item Gaussian
 
-\indent $p(x\ \mid\ \mu,\sigma^2) = \dfrac{1}{\sigma \sqrt{2\pi}} \exp{\left( -\dfrac{(x-\mu)^2}{2\sigma^2}\right)}$
+\indent $p_{\mu,\sigma^2}(x) = \dfrac{1}{\sigma \sqrt{2\pi}} \exp{\left( -\dfrac{(x-\mu)^2}{2\sigma^2}\right)}$
 \end{enumerate}
 \end{block}
 
 \uncover<2->{
 \begin{block}{}
 \begin{center}
-$p(x\ \mid\ \alpha) = 
+$p_\theta(x) = 
 \alt<3->{\redub{h(x)}_{Support}}{h(x)}
 \exp{
 	\left( 
@@ -89,7 +89,7 @@ $
 
 \begin{block}{}
 \begin{center}
-$p(x\ \mid\ \alpha) = \redub{h(x)}_{Support}
+$p_\theta(x) = \redub{h(x)}_{Support}
 \exp{
 	\left( 
 \redub{\theta}_{\textrm{Natural Parameters}} \cdot 
@@ -103,7 +103,7 @@ $p(x\ \mid\ \alpha) = \redub{h(x)}_{Support}
 
 \frame{\frametitle{Useful properties of log partition, $A(\theta)$}
 \begin{enumerate}
-\item $\nabla_\theta A(\theta) = \mathbb{E}_q[ T(x)]$
+\item $\nabla_\theta A(\theta) = \mathbb{E}[ T(x)]$
 \item<2-> $\nabla_\theta^2 A(\theta) = \text{Fisher information matrix}$
 \end{enumerate}
 }
