@@ -10,15 +10,30 @@
   \begin{figure}
     \includegraphics[scale=0.35]{figs/lda_plate.png}
   \end{figure}
-  
+\begin{itemize}
+\item Use stick-breaking construction
+\item Separate out global vs. local parameters
+\end{itemize}
 }
 
 
 \frame{\frametitle{Variational Inference for HDP}
-  \begin{figure}
-    \includegraphics[scale=0.35]{figs/lda_jmlr2013.png}
-  \end{figure}
-  
+Joint variational family \alt<4->{is}{``should be''}
+\begin{eqnarray*}
+q(\beta,v,z,\pi) 
+& = & 
+\left(  \prod_{k=1}^{\alt<4->{\alert{K}}{\infty}} q(\beta_k|\lambda_k)q(v_k | a_k) \right) \cdot\\
+& & 
+\left( 
+\prod_{d=1}^D 
+\prod_{i=1}^{\alt<4->{\alert{T}}{\infty}} q(c_{d,i}|\psi_{d,i}) q(\pi_{d,i}|\gamma_{d,i})
+\prod_{n=1}^N q(z_{d,n}|\phi_{d,n})
+\right)
+\end{eqnarray*}
+\begin{itemize}
+\item<2-> Truncate number of topics to $K$
+\item<3-> Truncate number of topics used per document to $T$
+\end{itemize}
 }
 
 \frame{\frametitle{HDP Distribution Table}
