@@ -1,5 +1,14 @@
 \frame{\frametitle{Local Optimization}
+How did we get $\lvp{\phi(\gvp{\lambda})} = \mathbb{E}_{\lambda^{(t-1)}}[\eta_g(x_n,z_{n\backslash j}, \beta)]$?
 
+\begin{enumerate}
+\item $\lvp{\phi}(\gvp{\lambda}) = $ \lvp{\text{local}} variational parameters locally optimized given some \gvp{\text{global parameters}}
+
+$$\lvp{\phi}(\gvp{\lambda}) \text{ such that } \nabla_\phi \mathcal{L}(\lambda, \phi(\lambda)) = 0$$
+\item If $\mathcal{L}_0(\lambda) = \mathcal{L}(\lambda,\phi(\lambda))$, then 
+
+$$\nabla_\lambda \mathcal{L}_0(\lambda) = \nabla_\lambda \mathcal{L}(\lambda, \phi(\lambda))$$
+\end{enumerate}
 }
 
 \frame{\frametitle{Global Optimization}
