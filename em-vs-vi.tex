@@ -1,10 +1,10 @@
 \frame{\frametitle{"Stochastizing" EM}
-\begin{center}
+Recall from Liang and Klein (2009):
 \begin{columns}
 \begin{column}{.5\textwidth}
 \begin{block}{}
-\uncover<1-2>{%\includegraphics[scale=.15]{figs/batch-em}
-\small
+\uncover<1-2>{
+\footnotesize
 \begin{enumerate}
 \item[] $\mu = \text{initialization}$
 \item[] for $t = 1, \ldots, T$:
@@ -22,8 +22,7 @@
 \end{column}
 \begin{column}{.5\textwidth}
 \begin{block}{}
-\begin{center}
-\uncover<2>{%\includegraphics[scale=.15]{figs/step-em}
+\uncover<2>{
 \footnotesize
 \begin{enumerate}
 \item[] $\mu = \text{initialization}$; $k = 0$
@@ -38,20 +37,17 @@
 \end{enumerate}
 \end{enumerate}
 }
-\end{center}
 \end{block}
 \end{column}
 \end{columns}
-\end{center}
 }
 
 \frame{\frametitle{"Stochastizing" Variational Inference}
-\begin{center}
 \begin{columns}
 \begin{column}{.5\textwidth}
 \begin{block}{}
 \uncover<1-2>{
-\small
+\footnotesize
 \begin{enumerate}
 \item[] $\gvp{\lambda^{(0)}}= \text{initialization}$
 \item[] 
@@ -70,24 +66,22 @@
 \end{column}
 \begin{column}{.5\textwidth}
 \begin{block}{}
-\begin{center}
 \uncover<2>{
 \footnotesize
 \begin{enumerate}
 \item[] $\gvp{\lambda^{(0)}}= \text{initialization}$
 \item[] set step-size schedule, $\rho_t$
 \item[] repeat:
-\begin{enumerate}
+\begin{itemize}
 \item[] sample data point $x_i$ u.a.r.
-\item[] $\lvp{\phi} = \mathbb{E}_{\lambda^{(t-1)}}[\eta_g(x_n,z_{n\backslash j}, \beta)]$
-\item[] $\gvp{\lambda^{(t)}} = \mathbb{E}_{q^{(t)}}[\eta_g(z,x)]$
-\end{enumerate}
+\item $\lvp{\phi(\gvp{\lambda})} = \mathbb{E}_{\lambda^{(t-1)}}[\eta_g(x_n,z_{n\backslash j}, \beta)]$
+\item $\gvp{\hat\lambda} = \mathbb{E}_{\lvp{\phi}} [ \eta_g(x_i^{(N)},z_i^{(N)})] $
+\item $\gvp{\lambda^{(t)}} = (1-\rho_t)\lambda^{(t-1)} + \rho_t \hat\lambda$
+\end{itemize}
 \item[] forever
 \end{enumerate}
 }
-\end{center}
 \end{block}
 \end{column}
 \end{columns}
-\end{center}
 }
