@@ -5,13 +5,72 @@ How did we get $\lvp{\phi(\gvp{\lambda})} = \mathbb{E}_{\lambda^{(t-1)}}[\eta_g(
 \item $\lvp{\phi}(\gvp{\lambda}) = $ \lvp{\text{local}} variational parameters locally optimized given some \gvp{\text{global parameters}}
 
 $$\lvp{\phi}(\gvp{\lambda}) \text{ such that } \nabla_\phi \mathcal{L}(\lambda, \phi(\lambda)) = 0$$
-\item If $\mathcal{L}_0(\lambda) = \mathcal{L}(\lambda,\phi(\lambda))$, then 
-
-$$\nabla_\lambda \mathcal{L}_0(\lambda) = \nabla_\lambda \mathcal{L}(\lambda, \phi(\lambda))$$
 \end{enumerate}
 }
 
 \frame{\frametitle{Global Optimization}
+\begin{enumerate}
+\item If $\mathcal{L}(\lambda) = \mathcal{L}_0(\lambda,\phi(\lambda))$, then 
+
+$$\nabla_\lambda \mathcal{L}(\lambda) = \nabla_\lambda \mathcal{L}_0(\lambda, \phi(\lambda))$$
+
+since $\nabla_\phi \mathcal{L}_0(\lambda, \phi(\lambda)) = 0$
+\item<2-> Use chain rule, variational factorization and $\mathcal{L} = D_{KL} + C$ to write 
+\begin{eqnarray*}
+\mathcal{L} & = &
+\mathbb{E}_q[\log p(\beta)] 
+- \mathbb{E}_q[\log q(\beta)] \\
+& & + \sum_{n=1}^N 
+\max_{\phi_n}\left( 
+\mathbb{E}_q[\log(x_n,z_n | \beta)] 
+- \mathbb{E}_q[\log q(z_n)]
+\right)
+\end{eqnarray*}
+\end{enumerate}
+}
+
+\frame{\frametitle{Expectation of Random Function}
+\begin{enumerate}
+\item We draw an index $I$ u.a.r.
+\item<2-> \textit{Define} a random function specific to $I$
+\uncover<3-> {
+\begin{eqnarray*}
+\mathcal{L}_I
+&  = &
+\mathbb{E}_q[\log p(\beta)] 
+- \mathbb{E}_q[\log q(\beta)] \\
+& & + N 
+\max_{\phi_{\alert{I}}}\left( 
+\mathbb{E}_q[\log(x_{\alert{I}},z_{\alert{I}} | \beta)] 
+- \mathbb{E}_q[\log q(z_{\alert{I}})]
+\right)
+\end{eqnarray*}
+}
+\item<4-> $E_q[\mathcal{L}_I(\lambda)] = \mathcal{L}(\lambda)$
+\uncover<5->{$ \Rightarrow \hat\nabla_\lambda \mathcal{L}_I$ is noisy, unbiased estimate of $\hat\nabla_\lambda \mathcal{L}$}
+\end{enumerate}
+}
+
+\frame{\frametitle{Hallucinating Repetitious Data}
+\begin{enumerate}
+\item Let's replace original data
+
+$$\{(x_i,z_i)\}_{i=1}^N$$
+with $N$ copies of $x_I$:
+
+$$\{(x_I,z_I)\}_{i=1}^N = \left(x_I^{(N)},z_I^{(N)}\right)$$
+\item<2-> $\mathcal{L}$ under this data $ = \mathcal{L}_I$
+\begin{itemize}
+\item<3-> Just use natural gradient formula from before!
+\end{itemize}
+\item<4-> Calculate localized gradients for each example $i$:
+$$\hat\nabla_\lambda \mathcal{L}_i = 
+\alpha + N\cdot \left(
+	\mathbb{E}_{\phi_{\alert{i}(\lambda)}}[T(x_i,z_i)],
+	1
+\right) - \lambda$$
+\item<5-> Interpolate each local parameter update with the previous iteration's
+\end{enumerate}
 }
 
 \frame{\frametitle{Schedule}
