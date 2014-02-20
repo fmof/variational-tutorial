@@ -42,6 +42,20 @@ Recall from Liang and Klein (2009):
 \end{columns}
 }
 
+\frame{\frametitle{Stochastic Variational Inference: Main Idea}
+Main points:
+\begin{enumerate}
+\item Sample, uniformly at random, a \textit{single} data point $x$
+\item Assume $x$ was seen many ($N$) times
+\item Form the \gvp{\text{\textit{initial} global}} updates
+\item Interpolate these temporary updates with the current parameters
+\end{enumerate}
+
+\uncover<2->{
+What about optimizing \lvp{\text{local}} variational parameters?
+}
+}
+
 \frame{\frametitle{"Stochastizing" Variational Inference}
 \begin{columns}
 \begin{column}{.5\textwidth}
